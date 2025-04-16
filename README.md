@@ -1,12 +1,38 @@
 # React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Este proyecto es una aplicación frontend construida con **React** y **Vite**, y preparada para ejecutarse dentro de un contenedor **Docker**.
 
-Currently, two official plugins are available:
+## 🚀 Tecnologías
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- [React](https://reactjs.org/)
+- [Vite](https://vitejs.dev/)
+- [Docker](https://www.docker.com/)
 
-## Expanding the ESLint configuration
+## 🛠️ Instalación local
 
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### Clonar el repositorio
+
+```bash
+git clone https://github.com/ademontel/proyecto-sin-nombre-1.git
+cd proyecto-sin-nombre-1
+```
+### Compilar el contenedor de Docker
+```
+docker-compose up --build
+```
+### Visualizar en:
+```
+http://localhost:5173
+```
+### Estructura del proyecto:
+```css
+📁 src/                → Código fuente de la app React  
+📄 Dockerfile          → Define cómo se construye el contenedor  
+📄 docker-compose.yml  → Define los servicios a levantar  
+📄 vite.config.js      → Configuración de Vite  
+📄 package.json        → Dependencias y scripts
+```
+### 🐳 Notas sobre Docker
+node_modules/ está ignorado y se crea dentro del contenedor.
+
+Se usa un volumen nombrado para evitar conflictos entre dependencias de Windows y Linux.
