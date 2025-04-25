@@ -18,7 +18,9 @@ cd proyecto-sin-nombre-1
 ```
 ### Compilar el contenedor de Docker
 ```
-docker-compose up --build
+Dev: docker-compose up --build (carga override → frontend+backend+DB)
+
+Prod: docker-compose -f docker-compose.yml up --build -d
 ```
 ### Visualizar en:
 ```
