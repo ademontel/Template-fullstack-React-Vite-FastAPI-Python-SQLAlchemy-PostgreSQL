@@ -1,38 +1,49 @@
-# React + Vite
+# User CRUD App (React + FastAPI + Docker)
 
-Este proyecto es una aplicación frontend construida con **React** y **Vite**, y preparada para ejecutarse dentro de un contenedor **Docker**.
+## Estructura de carpetas
 
-## 🚀 Tecnologías
+- **frontend/**: Aplicación React con Flux y Bootstrap
+- **backend/**: Servicio FastAPI
+- **docker-compose.yml**: Levanta frontend, backend y PostgreSQL
 
-- [React](https://reactjs.org/)
-- [Vite](https://vitejs.dev/)
-- [Docker](https://www.docker.com/)
+## Requisitos
 
-## 🛠️ Instalación local
+- Docker
+- Docker Compose
 
-### Clonar el repositorio
+## Levantar en desarrollo
+
+1. Clona el repo y ve a la raíz del proyecto.
+2. Asegúrate de tener el archivo `backend/.env.development`.
+3. Ejecuta:
+   ```
+   docker-compose up --build
+   ```
+4. Accede a:
+   - Frontend: http://localhost:3000
+   - API: http://localhost:8000
+   - Documentación FastAPI: http://localhost:8000/docs
+
+## Variables de entorno
+
+- **backend/.env.development**:
+  ```
+  POSTGRES_USER=postgres
+  POSTGRES_PASSWORD=postgres
+  POSTGRES_DB=users_db
+  DATABASE_URL=postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@db:5432/${POSTGRES_DB}
+  ```
+
+## Scripts útiles
+
+- `docker-compose down`: Detiene y elimina contenedores.
+- `docker-compose up --build frontend`: Levanta solo el frontend.
+- `docker-compose up --build backend db`: Levanta solo backend y base de datos.
+
+## Producción
+
+Ajusta el archivo `backend/.env.production` con tus credenciales externas y ejecuta:
 
 ```bash
-git clone https://github.com/ademontel/proyecto-sin-nombre-1.git
-cd proyecto-sin-nombre-1
+docker-compose -f docker-compose.yml up --build -d
 ```
-### Compilar el contenedor de Docker
-```
-docker-compose up --build
-```
-### Visualizar en:
-```
-http://localhost:5173
-```
-### Estructura del proyecto:
-```css
-📁 src/                → Código fuente de la app React  
-📄 Dockerfile          → Define cómo se construye el contenedor  
-📄 docker-compose.yml  → Define los servicios a levantar  
-📄 vite.config.js      → Configuración de Vite  
-📄 package.json        → Dependencias y scripts
-```
-### 🐳 Notas sobre Docker
-node_modules/ está ignorado y se crea dentro del contenedor.
-
-Se usa un volumen nombrado para evitar conflictos entre dependencias de Windows y Linux.
