@@ -2,11 +2,27 @@ from fastapi import FastAPI, HTTPException, Depends
 from sqlalchemy.orm import Session
 from . import models, schemas, crud
 from .database import SessionLocal, engine
+from fastapi.middleware.cors import CORSMiddleware
+import logging
+
+# Configurar logging
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+)
 
 # Crear tablas
 models.Base.metadata.create_all(bind=engine)
 
 app = FastAPI()
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["http://localhost:3000"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 # Dependencia de sesión
 def get_db():

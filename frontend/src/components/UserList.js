@@ -20,6 +20,7 @@ function UserList() {
           <th>ID</th>
           <th>Name</th>
           <th>Email</th>
+          <th>Password</th>
           <th>Actions</th>
         </tr>
       </thead>
@@ -29,6 +30,7 @@ function UserList() {
             <td>{u.id}</td>
             <td>{u.name}</td>
             <td>{u.email}</td>
+            <td>{u.password}</td>
             <td>
               <button className="btn btn-danger btn-sm" onClick={() => deleteUser(u.id)}>Delete</button>
             </td>
