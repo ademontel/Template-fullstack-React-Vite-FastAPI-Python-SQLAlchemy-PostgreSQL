@@ -5,8 +5,12 @@ from sqlalchemy import engine_from_config, pool
 from alembic import context
 from dotenv import load_dotenv, find_dotenv
 
-# 1) Add project root to sys.path
+# 1) Add backend and app directories to sys.path
 project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+backend_path = os.path.join(project_root, "backend")
+app_path = os.path.join(backend_path, "app")
+sys.path.insert(0, app_path)
+sys.path.insert(0, backend_path)
 sys.path.insert(0, project_root)
 
 # 2) Load environment variables FIRST
@@ -31,7 +35,7 @@ if config.config_file_name:
     fileConfig(config.config_file_name)
 
 # 6) Import models metadata
-from backend.database import Base
+from database import Base  # Cambiado de backend.database a database
 target_metadata = Base.metadata
 
 
