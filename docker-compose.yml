@@ -26,7 +26,8 @@ services:
     ports:
       - "8000:8000"
     volumes:
-      - ./backend:/app
+      - .:/workspace
+    working_dir: /workspace/backend
     depends_on:
       db:
         condition: service_healthy
